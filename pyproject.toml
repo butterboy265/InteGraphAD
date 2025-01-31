@@ -18,5 +18,5 @@ readme = "README.md"
 requires-python = ">=3.6"
 
 [project.urls]
-Homepage = https://github.com/butterboy265/InteGraphAD
+Homepage = "https://github.com/butterboy265/InteGraphAD"
 
