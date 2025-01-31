@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "InteGraphAD"
+version = "0.1.0"
+description = "A CSDL-based numerical integration package"
+authors = [
+	{name = Sankalp Kaushik", email = "kaushiksankalp02@gmail.com"}
+]
+license = {text = "MIT"}
+dependencies = [
+	"numpy",
+	"csdl-alpha"
+]
+readme = "README.md"
+requires-python = ">=3.6"
+
+[project.urls]
+Homepage = https://github.com/butterboy265/InteGraphAD
+
