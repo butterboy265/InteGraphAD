@@ -7,7 +7,7 @@ name = "InteGraphAD"
 version = "0.1.0"
 description = "A CSDL-based numerical integration package"
 authors = [
-	{name = Sankalp Kaushik", email = "kaushiksankalp02@gmail.com"}
+	{name = "Sankalp Kaushik", email = "kaushiksankalp02@gmail.com"}
 ]
 license = {text = "MIT"}
 dependencies = [
