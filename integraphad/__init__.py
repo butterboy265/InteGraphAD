@@ -1,2 +1,2 @@
-from .integrators import Integrators
+from integraphad.integrators import Integrators
 
