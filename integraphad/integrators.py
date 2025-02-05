@@ -45,11 +45,11 @@ class Integrators:
             self.y = self.y.set(csdl.slice[i + 1, :], y_i1)
         return self.t, self.y
 
-    def _back_euler(self, K, M, C, n):
+    def _back_euler(self, *args):
         for i in csdl.frange(self.num_steps):
             y_prev = self.y[i, :]
             y_next = csdl.Variable(name='y_next', shape=self.y[i+1, :].shape)
-            residual = y_next - y_prev - self.h * self.func(self.t[i+1], y_next, K, M, C, n)
+            residual = y_next - y_prev - self.h * self.func(self.t[i+1], y_next, *args)
             solver = csdl.nonlinear_solvers.Newton('solver', tolerance=1e-8)
             solver.add_state(y_next, residual, initial_value=self.y[i+1, :])
             solver.run()
