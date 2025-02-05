@@ -50,12 +50,24 @@ class Integrators:
             y_prev = self.y[i, :]
             y_next = csdl.Variable(name='y_next', shape=self.y[i+1, :].shape)
             residual = y_next - y_prev - self.h * self.func(self.t[i+1], y_next, *args)
-            solver = csdl.nonlinear_solvers.Newton('solver', tolerance=1e-8)
+            solver = csdl.nonlinear_solvers.Newton('xue hua piao piao', tolerance=1e-8)
             solver.add_state(y_next, residual, initial_value=self.y[i+1, :])
             solver.run()
             self.y = self.y.set(csdl.slice[i + 1, :], y_next)
         return self.t, self.y
 
+    def _crank_nicolson(self, *args):
+        for i in csdl.frange(self.num_steps):
+            y_prev = self.y[i, :]
+            y_next = csdl.Variable(name='y_next', shape=self.y[i+1, :].shape)
+            residual = y_next - y_prev - self.h * self.func(self.t[i+1], y_next, *args)
+            residual = y_next - y_prev - 0.5 * self.h * (self.func(self.t[i], y_prev, *args) + self.func(self.t[i+1], y_next, *args))
+            solver = csdl.nonlinear_solvers.Newton('bei feng xiao xiao', tolerance=1e-8)
+            solver.add_state(y_next, residual, initial_value=self.y[i+1, :])
+            solver.run()
+            self.y = self.y.set(csdl.slice[i + 1, :], y_next)
+        return self.t, self.y
+    
     @classmethod
     def solve(cls, func, time_interval, init_conditions, *args, num_steps=100, method='trapezoid'):
         """
