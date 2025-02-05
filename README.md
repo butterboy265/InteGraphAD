@@ -1,18 +1,17 @@
 # InteGraphAD
 
-**InteGraphAD** is a Python package for numerical integration and automatic differentiation using CSDL.
+**InteGraphAD** is a Python package for numerical integration of $n^{th}$ order systems of differential equations. 
 
 ## Features
-- Implements **Trapezoidal**, **RK4**, and **Backward Euler** integration methods.
-- Uses **CSDL** (Computational Simulation and Design Language).
-- Supports **automatic differentiation** for solving dynamic equations.
+- Implements various numerical integration methods
+    - Implicit Methods: Backward Euler, Crank-Nicolson
+    - Explicit Methods: Trapezoidal, $4^{th}$ order Runge Kutta
+- Compatible with **CSDL** (Computational System Design Language)
 
 ## Installation
 
-You can install **InteGraphAD** via `pip` (after uploading to PyPI):
+You can install **InteGraphAD** via `pip`:
 
 ```bash
-pip install InteGraphAD
-
 pip install git+https://github.com/butterboy265/InteGraphAD.git
 
