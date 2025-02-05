@@ -6,7 +6,7 @@ setup(
     description="A CSDL-based numerical integration package",
     author="Sankalp Kaushik",
     author_email="kaushiksankalp02@gmail.com",
-    packages=find_packages(where="integraphad"),
+    packages=find_packages(),
     install_requires=[
         "numpy",
         "csdl-alpha",
