@@ -55,3 +55,22 @@ class Integrators:
             solver.run()
             self.y = self.y.set(csdl.slice[i + 1, :], y_next)
         return self.t, self.y
+
+    @classmethod
+    def solve(cls, func, time_interval, init_conditions, *args, num_steps=100, method='trapezoid'):
+        """
+        A convenience class method that allows you to run integration in one call.
+        
+        Parameters:
+            func: The function (ODE) to integrate.
+            time_interval: A tuple (t0, tF) defining the integration interval.
+            init_conditions: The initial conditions as a NumPy array.
+            *args: Any additional arguments required by func.
+            num_steps: Number of integration steps (default 100).
+            method: Integration method to use ('trapezoid', 'rk4', or 'backEuler').
+        
+        Returns:
+            A tuple (t, y) where t is the time array and y the integrated result.
+        """
+        instance = cls(func, time_interval, init_conditions, num_steps)
+        return instance.integrate(method, *args)
