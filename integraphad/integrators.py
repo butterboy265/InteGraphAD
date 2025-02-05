@@ -16,7 +16,8 @@ class Integrators:
         methods = {
             'trapezoid': self._trapezoid,
             'rk4': self._rk4,
-            'backEuler': self._back_euler
+            'backEuler': self._back_euler,
+            'crankNicolson': self._cn
         }
         
         if method not in methods:
@@ -56,7 +57,7 @@ class Integrators:
             self.y = self.y.set(csdl.slice[i + 1, :], y_next)
         return self.t, self.y
 
-    def _crank_nicolson(self, *args):
+    def _cn(self, *args):
         for i in csdl.frange(self.num_steps):
             y_prev = self.y[i, :]
             y_next = csdl.Variable(name='y_next', shape=self.y[i+1, :].shape)
